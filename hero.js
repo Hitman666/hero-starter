@@ -98,18 +98,18 @@ var move = function(gameData, helpers) {
 
 // // The "Careful Assassin"
 // // This hero will attempt to kill the closest weaker enemy hero.
-// var move = function(gameData, helpers) {
-//   var myHero = gameData.activeHero;
-//   if (myHero.health < 50) {
-//     return helpers.findNearestHealthWell(gameData);
-//   } else {
-//     return helpers.findNearestWeakerEnemy(gameData);
-//   }
-// };
+var move = function(gameData, helpers) {
+   var myHero = gameData.activeHero;
+   if (myHero.health < 70) {
+     return helpers.findNearestHealthWell(gameData);
+   } else {
+     return helpers.findNearestWeakerEnemy(gameData);
+   }
+};
 
 // The "Safe Diamond Miner"
 // This hero will attempt to capture enemy diamond mines.
-var move = function(gameData, helpers) {
+/*var move = function(gameData, helpers) {
   var myHero = gameData.activeHero;
 
   //Get stats on the nearest health well
@@ -132,7 +132,7 @@ var move = function(gameData, helpers) {
     //If healthy, go capture a diamond mine!
     return helpers.findNearestNonTeamDiamondMine(gameData);
   }
-};
+};*/
 
 
 // // The "Selfish Diamond Miner"

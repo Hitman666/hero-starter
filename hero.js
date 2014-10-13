@@ -100,10 +100,23 @@ var move = function(gameData, helpers) {
 // // This hero will attempt to kill the closest weaker enemy hero.
 var move = function(gameData, helpers) {
    var myHero = gameData.activeHero;
-   if (myHero.health < 70) {
-     return helpers.findNearestHealthWell(gameData);
-   } else {
-     return helpers.findNearestWeakerEnemy(gameData);
+
+   var healthWellStats = helpers.findNearestObjectDirectionAndDistance(gameData.board, myHero, function(boardTile) {
+    if (boardTile.type === 'HealthWell') {
+      return true;
+    }
+  });
+  var distanceToHealthWell = healthWellStats.distance;
+  var directionToHealthWell = healthWellStats.direction;
+
+   	if (myHero.health < 65) {
+    	return directionToHealthWell;
+   	}
+   	else if (myHero.health < 100 && distanceToHealthWell <= 2){
+   		return directionToHealthWell;
+   	}
+   	else {
+     	return helpers.findNearestWeakerEnemy(gameData);
    }
 };
 
